@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginSD {
 
-    WebDriver driver;
+    public static WebDriver driver;
 
     @Given("I am on login page")
     public void loginPage()
@@ -79,5 +79,13 @@ public class LoginSD {
         String actual = driver.getTitle();
 
         Assert.assertEquals("",expected,actual);
+    }
+
+    @When("I enter {string} as username and {string} as password")
+    public void iEnterAsUsernameAndAsPassword(String username, String password) {
+
+
+        driver.findElement(By.id("login-username")).sendKeys(username);
+        driver.findElement(By.id("login-password")).sendKeys(password);
     }
 }
